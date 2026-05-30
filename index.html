@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería de la Propiedad</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header id="inicio" class="site-header">
+    <h1 class="site-title">Galería de la Propiedad</h1>
+    <p class="site-subtitle">Explora cada espacio de esta hermosa casa</p>
+  </header>
+
+  <nav class="site-nav" aria-label="Navegación principal">
+    <ul class="site-nav-list">
+      <li><a class="site-nav-link" href="#inicio">Inicio</a></li>
+      <li><a class="site-nav-link" href="#galeria">Galería</a></li>
+      <li><a class="site-nav-link" href="#propiedad">Propiedad</a></li>
+      <li><a class="site-nav-link" href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <nav class="filter-bar" aria-label="Filtros de galería">
+    <div class="filter-type" role="group" aria-label="Tipo de medio">
+      <button class="filter-btn active" data-type="all" aria-pressed="true">Todo</button>
+      <button class="filter-btn" data-type="photo" aria-pressed="false">Fotos</button>
+      <button class="filter-btn" data-type="video" aria-pressed="false">Videos</button>
+    </div>
+    <div class="filter-categories" id="category-pills" role="group" aria-label="Categorías">
+      <!-- Generado dinámicamente por gallery.js -->
+    </div>
+  </nav>
+
+  <main id="galeria">
+    <div id="gallery-grid" class="gallery-grid" aria-label="Galería de fotos y videos">
+      <!-- Generado dinámicamente por gallery.js -->
+    </div>
+    <p id="empty-msg" class="empty-msg" hidden>No hay contenido en esta categoría.</p>
+  </main>
+
+  <!-- Property Info + Contact -->
+  <section id="propiedad" class="property-section" hidden>
+    <div class="property-inner">
+
+      <div class="property-main reveal">
+        <div class="property-header">
+          <h2 id="prop-title" class="prop-title"></h2>
+          <p id="prop-price" class="prop-price"></p>
+        </div>
+        <p id="prop-description" class="prop-description"></p>
+
+        <ul id="prop-features" class="prop-features">
+          <!-- Generado dinámicamente -->
+        </ul>
+
+        <p id="prop-address" class="prop-address"></p>
+      </div>
+
+      <div id="contacto" class="contact-card reveal" style="--reveal-delay: 120ms">
+        <h3 class="contact-title">Información de contacto</h3>
+        <p id="contact-name" class="contact-name"></p>
+        <div id="contact-links" class="contact-links">
+          <!-- Generado dinámicamente -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer reveal">
+    <div class="footer-inner">
+      <p class="footer-brand">Galería de la Propiedad</p>
+      <p class="footer-copy">&copy; <span id="footer-year"></span> — Todos los derechos reservados</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Visor de media">
+    <div class="lightbox-backdrop"></div>
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar visor">&#x2715;</button>
+      <div class="lightbox-content" id="lightbox-content"></div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <button id="back-to-top" class="back-to-top" aria-label="Volver arriba" hidden>&#8679;</button>
+
+  <script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
+  <script type="module" src="js/gallery.js"></script>
+</body>
+</html>

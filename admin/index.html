@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Galería</title>
+  <link rel="stylesheet" href="../css/admin.css" />
+</head>
+<body>
+
+  <!-- ===================== LOGIN VIEW ===================== -->
+  <section id="login-view" class="login-view">
+    <div class="login-card">
+      <h1 class="login-title">Panel Admin</h1>
+      <p class="login-subtitle">Galería de la Propiedad</p>
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" autocomplete="email" required placeholder="tu@email.com" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" autocomplete="current-password" required placeholder="••••••••" />
+        </div>
+        <p id="login-error" class="error-msg" hidden></p>
+        <button type="submit" class="btn btn-primary" id="login-btn">Iniciar sesión</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== ADMIN VIEW ===================== -->
+  <section id="admin-view" class="admin-view" hidden>
+
+    <header class="admin-header">
+      <h1 class="admin-title">Panel Admin</h1>
+      <div class="admin-header-right">
+        <a href="../index.html" class="btn btn-ghost" target="_blank">Ver galería ↗</a>
+        <button id="logout-btn" class="btn btn-ghost">Cerrar sesión</button>
+      </div>
+    </header>
+
+    <div class="admin-body">
+
+      <!-- Upload photo -->
+      <section class="upload-card">
+        <h2 class="section-title">Subir Fotos</h2>
+        <div class="form-group">
+          <label for="photo-file">Archivos (JPG, PNG, WebP)</label>
+          <input type="file" id="photo-file" accept="image/*" multiple />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="photo-title">Título</label>
+            <input type="text" id="photo-title" placeholder="Ej: Vista del jardín" />
+          </div>
+          <div class="form-group">
+            <label for="photo-category">Categoría</label>
+            <select id="photo-category">
+              <option value="sala">Sala</option>
+              <option value="cocina">Cocina</option>
+              <option value="habitacion">Habitación</option>
+              <option value="exterior">Exterior</option>
+              <option value="bano">Baño</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="photo-description">Descripción (opcional)</label>
+          <textarea id="photo-description" rows="2" placeholder="Descripción breve..."></textarea>
+        </div>
+        <div id="upload-progress-wrap" class="progress-wrap" hidden>
+          <div class="progress-bar">
+            <div class="progress-fill" id="upload-progress-fill"></div>
+          </div>
+          <p class="progress-label" id="upload-progress-label">Subiendo...</p>
+        </div>
+        <p id="photo-success" class="success-msg" hidden>Foto(s) subida(s) correctamente.</p>
+        <p id="photo-error" class="error-msg" hidden></p>
+        <button id="upload-photo-btn" class="btn btn-primary">Subir fotos</button>
+      </section>
+
+      <!-- Add video -->
+      <section class="upload-card">
+        <h2 class="section-title">Agregar Video</h2>
+        <div class="form-group">
+          <label for="video-url">URL del video (YouTube o enlace directo)</label>
+          <input type="url" id="video-url" placeholder="https://www.youtube.com/watch?v=..." />
+        </div>
+        <div class="form-group">
+          <label for="video-thumbnail">URL de miniatura (opcional — se genera automáticamente para YouTube)</label>
+          <input type="url" id="video-thumbnail" placeholder="https://..." />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="video-title">Título</label>
+            <input type="text" id="video-title" placeholder="Ej: Recorrido exterior" />
+          </div>
+          <div class="form-group">
+            <label for="video-category">Categoría</label>
+            <select id="video-category">
+              <option value="sala">Sala</option>
+              <option value="cocina">Cocina</option>
+              <option value="habitacion">Habitación</option>
+              <option value="exterior">Exterior</option>
+              <option value="bano">Baño</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="video-description">Descripción (opcional)</label>
+          <textarea id="video-description" rows="2" placeholder="Descripción breve..."></textarea>
+        </div>
+        <p id="video-success" class="success-msg" hidden>Video agregado correctamente.</p>
+        <p id="video-error" class="error-msg" hidden></p>
+        <button id="add-video-btn" class="btn btn-primary">Agregar video</button>
+      </section>
+
+      <!-- Property info -->
+      <section class="upload-card prop-info-card">
+        <h2 class="section-title">Información de la propiedad</h2>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prop-title">Título</label>
+            <input type="text" id="prop-title" placeholder="Ej: Casa en venta — Col. Las Flores" />
+          </div>
+          <div class="form-group">
+            <label for="prop-price">Precio</label>
+            <input type="text" id="prop-price" placeholder="Ej: $1,500,000 MXN" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prop-description">Descripción</label>
+          <textarea id="prop-description" rows="3" placeholder="Descripción general de la propiedad..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="prop-address">Dirección / Ubicación</label>
+          <input type="text" id="prop-address" placeholder="Ej: Calle Roble 45, Col. Jardines, CDMX" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prop-bedrooms">Habitaciones</label>
+            <input type="number" id="prop-bedrooms" min="0" placeholder="3" />
+          </div>
+          <div class="form-group">
+            <label for="prop-bathrooms">Baños</label>
+            <input type="number" id="prop-bathrooms" min="0" placeholder="2" />
+          </div>
+          <div class="form-group">
+            <label for="prop-area">Área (m²)</label>
+            <input type="number" id="prop-area" min="0" placeholder="120" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group checkbox-group">
+            <label><input type="checkbox" id="prop-garage" /> Garaje</label>
+          </div>
+          <div class="form-group checkbox-group">
+            <label><input type="checkbox" id="prop-pool" /> Piscina</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prop-extra">Características adicionales (una por línea)</label>
+          <textarea id="prop-extra" rows="2" placeholder="Ej: Jardín trasero&#10;Cuarto de servicio"></textarea>
+        </div>
+        <h3 class="subsection-title">Contacto</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-name">Nombre del agente / propietario</label>
+            <input type="text" id="contact-name" placeholder="Ej: María López" />
+          </div>
+          <div class="form-group">
+            <label for="contact-phone">Teléfono</label>
+            <input type="tel" id="contact-phone" placeholder="Ej: +52 55 1234 5678" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contact-whatsapp">WhatsApp (número con código de país)</label>
+            <input type="tel" id="contact-whatsapp" placeholder="Ej: 5215512345678" />
+          </div>
+          <div class="form-group">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" placeholder="Ej: contacto@ejemplo.com" />
+          </div>
+        </div>
+        <p id="prop-success" class="success-msg" hidden>Información guardada.</p>
+        <p id="prop-error" class="error-msg" hidden></p>
+        <button id="save-prop-btn" class="btn btn-primary">Guardar información</button>
+      </section>
+
+      <!-- Media list -->
+      <section class="media-list-section">
+        <h2 class="section-title">Contenido subido</h2>
+        <div id="media-list" class="media-list">
+          <p class="muted-text">Cargando...</p>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <script type="module" src="../js/admin.js"></script>
+</body>
+</html>
